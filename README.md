@@ -1,5 +1,4 @@
-# MonitorDarkener
+# BF2DDSAssembler
 
-Monitor Darkener is an app that "dims" or "disables" any selected screens apart from the primary screen.
-It disables/dims the screens using a black overlay. So they're not really turned off but they will not display anything.
-This is ideal for when watching movies/seires and you don't want to be distracted by your other screens.
+BF2 DDS Assembler is a program that takes any color or detail map found in your level folder and combines them to a single image .PNG.
+It also allows you to split an exisiting image (4096x2) into correctly compressed and split .DDS files.
