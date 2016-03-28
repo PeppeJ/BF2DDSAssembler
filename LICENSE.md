@@ -1,1 +1,3 @@
+This code contains <a href="http://www.codeproject.com/Articles/31702/NET-Targa-Image-Reader">TargaImage.cs</a> by <a href="http://www.codeproject.com/Members/David-Polomis">David Polomis</a>, licensed under <a rel="license" href ="http://www.codeproject.com/info/cpol10.aspx">The Code Project Open License (CPOL) 1.02</a>
+
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
