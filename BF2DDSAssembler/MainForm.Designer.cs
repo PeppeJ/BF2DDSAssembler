@@ -38,6 +38,7 @@
             this.saveSeperateImagesButton = new System.Windows.Forms.Button();
             this.colormapRadio = new System.Windows.Forms.RadioButton();
             this.imageOptionsBox = new System.Windows.Forms.GroupBox();
+            this.useCudaBox = new System.Windows.Forms.CheckBox();
             this.editorFolderBox = new System.Windows.Forms.CheckBox();
             this.detailmapRadio = new System.Windows.Forms.RadioButton();
             this.detailSuffixBox = new System.Windows.Forms.GroupBox();
@@ -52,7 +53,8 @@
             this.showCoordinateBox = new System.Windows.Forms.CheckBox();
             this.showGridBox = new System.Windows.Forms.CheckBox();
             this.invertTextColorBox = new System.Windows.Forms.CheckBox();
-            this.useCudaBox = new System.Windows.Forms.CheckBox();
+            this.mapSizeCombo = new System.Windows.Forms.ComboBox();
+            this.mapSizeLabel = new System.Windows.Forms.Label();
             this.imageOptionsBox.SuspendLayout();
             this.detailSuffixBox.SuspendLayout();
             this.displayOptionsGroup.SuspendLayout();
@@ -142,6 +144,18 @@
             this.imageOptionsBox.TabIndex = 6;
             this.imageOptionsBox.TabStop = false;
             this.imageOptionsBox.Text = "Image Options";
+            // 
+            // useCudaBox
+            // 
+            this.useCudaBox.AutoSize = true;
+            this.useCudaBox.Checked = true;
+            this.useCudaBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.useCudaBox.Location = new System.Drawing.Point(6, 90);
+            this.useCudaBox.Name = "useCudaBox";
+            this.useCudaBox.Size = new System.Drawing.Size(78, 17);
+            this.useCudaBox.TabIndex = 8;
+            this.useCudaBox.Text = "Use CUDA";
+            this.useCudaBox.UseVisualStyleBackColor = true;
             // 
             // editorFolderBox
             // 
@@ -266,7 +280,7 @@
             this.displayOptionsGroup.Controls.Add(this.invertTextColorBox);
             this.displayOptionsGroup.Location = new System.Drawing.Point(530, 12);
             this.displayOptionsGroup.Name = "displayOptionsGroup";
-            this.displayOptionsGroup.Size = new System.Drawing.Size(209, 100);
+            this.displayOptionsGroup.Size = new System.Drawing.Size(204, 100);
             this.displayOptionsGroup.TabIndex = 9;
             this.displayOptionsGroup.TabStop = false;
             this.displayOptionsGroup.Text = "Preview Options";
@@ -304,23 +318,36 @@
             this.invertTextColorBox.UseVisualStyleBackColor = true;
             this.invertTextColorBox.CheckedChanged += new System.EventHandler(this.invertTextColorBox_CheckedChanged);
             // 
-            // useCudaBox
+            // mapSizeCombo
             // 
-            this.useCudaBox.AutoSize = true;
-            this.useCudaBox.Checked = true;
-            this.useCudaBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.useCudaBox.Location = new System.Drawing.Point(6, 90);
-            this.useCudaBox.Name = "useCudaBox";
-            this.useCudaBox.Size = new System.Drawing.Size(78, 17);
-            this.useCudaBox.TabIndex = 8;
-            this.useCudaBox.Text = "Use CUDA";
-            this.useCudaBox.UseVisualStyleBackColor = true;
+            this.mapSizeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.mapSizeCombo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.mapSizeCombo.Items.AddRange(new object[] {
+            "4km^2",
+            "2km^2",
+            "1km^2"});
+            this.mapSizeCombo.Location = new System.Drawing.Point(530, 145);
+            this.mapSizeCombo.MaxDropDownItems = 3;
+            this.mapSizeCombo.Name = "mapSizeCombo";
+            this.mapSizeCombo.Size = new System.Drawing.Size(204, 21);
+            this.mapSizeCombo.TabIndex = 10;
+            // 
+            // mapSizeLabel
+            // 
+            this.mapSizeLabel.AutoSize = true;
+            this.mapSizeLabel.Location = new System.Drawing.Point(527, 129);
+            this.mapSizeLabel.Name = "mapSizeLabel";
+            this.mapSizeLabel.Size = new System.Drawing.Size(54, 13);
+            this.mapSizeLabel.TabIndex = 11;
+            this.mapSizeLabel.Text = "Map Size:";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(746, 532);
+            this.Controls.Add(this.mapSizeLabel);
+            this.Controls.Add(this.mapSizeCombo);
             this.Controls.Add(this.combineButton);
             this.Controls.Add(this.displayOptionsGroup);
             this.Controls.Add(this.saveSeperateImagesButton);
@@ -374,6 +401,8 @@
         private System.Windows.Forms.CheckBox invertTextColorBox;
         private System.Windows.Forms.CheckBox editorFolderBox;
         private System.Windows.Forms.CheckBox useCudaBox;
+        private System.Windows.Forms.ComboBox mapSizeCombo;
+        private System.Windows.Forms.Label mapSizeLabel;
     }
 }
 

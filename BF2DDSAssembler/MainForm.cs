@@ -43,7 +43,6 @@ namespace BF2DDSAssembler
         public MainForm()
         {
             InitializeComponent();
-            Console.WriteLine(GetSuffix);
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
@@ -78,6 +77,15 @@ namespace BF2DDSAssembler
 
                 }
             }
+            mapSizeCombo.SelectedIndex = 0;
+        }
+
+        private int GetMapSize
+        {
+            get
+            {
+                return (int)char.GetNumericValue(((string)mapSizeCombo.SelectedItem)[0]) * 2;
+            }
         }
 
         private void selectFolderClick(object sender, EventArgs e)
@@ -106,7 +114,7 @@ namespace BF2DDSAssembler
                 {
                     string fullFilePath = files[i];
                     string file = files[i];
-                    Console.WriteLine(file);
+
                     file = file.Replace(loadFolderDialog.SelectedPath + "\\", "");
 
                     file = file.Replace("tx", "");
@@ -142,10 +150,10 @@ namespace BF2DDSAssembler
             DialogResult result = saveLargeFileDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
-                Bitmap largeImage = new Bitmap(GetImageSize * 8, GetImageSize * 8);
-                for (int x = 0; x < 8; x++)
+                Bitmap largeImage = new Bitmap(GetImageSize * GetMapSize, GetImageSize * GetMapSize);
+                for (int x = 0; x < GetMapSize; x++)
                 {
-                    for (int y = 0; y < 8; y++)
+                    for (int y = 0; y < GetMapSize; y++)
                     {
                         using (Graphics g = Graphics.FromImage(largeImage))
                         {
@@ -164,9 +172,9 @@ namespace BF2DDSAssembler
             {
                 ActivateButtons(true);
                 Bitmap largeImage = new Bitmap(openLargeFileDialog.FileName);
-                for (int x = 0; x < 8; x++)
+                for (int x = 0; x < GetMapSize; x++)
                 {
-                    for (int y = 0; y < 8; y++)
+                    for (int y = 0; y < GetMapSize; y++)
                     {
                         Bitmap subimage = new Bitmap(GetImageSize, GetImageSize);
                         using (Graphics g = Graphics.FromImage(subimage))
@@ -223,9 +231,9 @@ namespace BF2DDSAssembler
             DialogResult result = loadFolderDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
-                for (int x = 0; x < 8; x++)
+                for (int x = 0; x < GetMapSize; x++)
                 {
-                    for (int y = 0; y < 8; y++)
+                    for (int y = 0; y < GetMapSize; y++)
                     {
                         string fileName = string.Format("tx{0:00}x{1:00}{2}.png", x, y, GetSuffix);
                         string fullPath = Path.Combine(loadFolderDialog.SelectedPath, fileName);
@@ -288,14 +296,14 @@ namespace BF2DDSAssembler
             else
                 detailSuffixBox.Enabled = true;
         }
-        
+
         private void detailSuffixBox_EnabledChanged(object sender, EventArgs e)
         {
             if (detailSuffixBox.Enabled)
                 detailSuffixBox.Controls
                     .OfType<RadioButton>()
                     .ToList()
-                    .ForEach(r => 
+                    .ForEach(r =>
                     {
                         r.Enabled = true;
                         r.Refresh();
@@ -332,7 +340,7 @@ namespace BF2DDSAssembler
                 previewPanel.Controls
                     .OfType<PictureBox>()
                     .ToList()
-                    .ForEach(pb => 
+                    .ForEach(pb =>
                         {
                             pb.BorderStyle = BorderStyle.FixedSingle;
                             pb.Refresh();
@@ -342,7 +350,7 @@ namespace BF2DDSAssembler
                 previewPanel.Controls
                     .OfType<PictureBox>()
                     .ToList()
-                    .ForEach(pb => 
+                    .ForEach(pb =>
                         {
                             pb.BorderStyle = BorderStyle.None;
                             pb.Refresh();
@@ -358,7 +366,7 @@ namespace BF2DDSAssembler
                     .ForEach(p => p.Controls
                         .OfType<Label>()
                         .ToList()
-                        .ForEach(l => 
+                        .ForEach(l =>
                         {
                             l.ForeColor = SystemColors.HighlightText;
                             l.Refresh();
@@ -371,7 +379,7 @@ namespace BF2DDSAssembler
                     .ForEach(p => p.Controls
                         .OfType<Label>()
                         .ToList()
-                        .ForEach(l => 
+                        .ForEach(l =>
                         {
                             l.ForeColor = SystemColors.ControlText;
                             l.Refresh();
